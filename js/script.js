@@ -1,50 +1,44 @@
-/* Задания на урок:
+/* Задание на урок:
 
-1) Удалить все рекламные блоки со страницы (правая часть сайта)
+1) Создать переменную numberOfFilms и в неё поместить ответ от пользователя на вопрос:
+'Сколько фильмов вы уже посмотрели?'
 
-2) Изменить жанр фильма, поменять "комедия" на "драма"
+2) Создать объект personalMovieDB и в него поместить такие свойства:
+    - count - сюда передается ответ на первый вопрос
+    - movies - в это свойство поместить пустой объект
+    - actors - тоже поместить пустой объект
+    - genres - сюда поместить пустой массив
+    - privat - в это свойство поместить boolean(логическое) значение false
 
-3) Изменить задний фон постера с фильмом на изображение "bg.jpg". Оно лежит в папке img.
-Реализовать только при помощи JS
+3) Задайте пользователю по два раза вопросы:
+    - 'Один из последних просмотренных фильмов?'
+    - 'На сколько оцените его?'
+Ответы стоит поместить в отдельные переменные
+Записать ответы в объект movies в формате: 
+    movies: {
+        'logan': '8.1'
+    }
 
-4) Список фильмов на странице сформировать на основании данных из этого JS файла.
-Отсортировать их по алфавиту 
-
-5) Добавить нумерацию выведенных фильмов */
+Проверить, чтобы все работало без ошибок в консоли */
 
 'use strict';
 
-const movieDB = {
-    movies: [
-        "Логан",
-        "Лига справедливости",
-        "Ла-ла лэнд",
-        "Одержимость",
-        "Скотт Пилигрим против..."
-    ]
+const numberOfFilms = +prompt('Сколько фильмов вы уже посмотрели?', '');
+
+const personalMovieDB = {
+    count: numberOfFilms,
+    movies: {},
+    actors: {},
+    genres: [],
+    privat: false
 };
 
-const adv = document.querySelectorAll('.promo__adv img'),
-      poster = document.querySelector('.promo__bg'),
-      genre = poster.querySelector('.promo__genre'),
-      movieList = document.querySelector('.promo__interactive-list');
+const a = prompt('Один из последних просмотренных фильмов?', ''),
+      b = +prompt('На сколько оцените его?', ''),
+      c = prompt('Один из последних просмотренных фильмов?', ''),
+      d = +prompt('На сколько оцените его?', '');
 
-adv.forEach(item => {
-    item.remove();
-});
+personalMovieDB.movies[a] = b;
+personalMovieDB.movies[c] = d;
 
-genre.textContent = 'Драма';
-
-poster.style.backgroundImage = 'url("img/bg.jpg")';
-
-movieList.innerHTML = "";
-
-movieDB.movies.sort();
-
-movieDB.movies.forEach((film, i) => {
-    movieList.innerHTML += `
-     <li class="promo__interactive-item">${i + 1} ${film}
-        <div class="delete"></div>
-     </li>
-    `;
-});
+console.log(personalMovieDB);
