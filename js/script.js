@@ -36,11 +36,25 @@ const personalMovieDB = {
 for (let i = 0; i < 2; i++) {
   const movie = prompt('What was the last movie you watched?', '');
   const rating = +prompt('How much do you rate it?');
+  const validMovie = movie !== null && movie.trim().length > 0 && movie.length <= 50;
+  const validRating = rating !== null && !isNaN(rating);
 
-  if (movie && !isNaN(rating)) {
+  if (validMovie && validRating) {
     personalMovieDB.movies[movie] = rating;
   } else {
-    alert('Please provide valid movie name and rating.');
+    console.log('Error')
     i--; 
   }
 }
+
+if (personalMovieDB.count <= 10) {
+    console.log('Watched quite a few films.');
+} else if (personalMovieDB.count >= 10 && personalMovieDB.count < 30) {
+    console.log('You are a classic viewer.');
+} else if (personalMovieDB.count > 30) {
+    console.log('You are a movie buff.');
+} else {
+    console.log('error');
+}
+
+console.log(personalMovieDB)
