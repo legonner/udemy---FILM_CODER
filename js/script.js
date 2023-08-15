@@ -65,8 +65,26 @@ const personalMovieDB = {
     },
 };
 
-personalMovieDB.start();
-personalMovieDB.rememberMyFilms();
-personalMovieDB.detectPersonalLevel();
-personalMovieDB.showMyDB(personalMovieDB.privat);
-personalMovieDB.writeYourGenres();
+const adv = document.querySelectorAll('.promo__adv img');
+adv.forEach(e => e.remove());
+
+const janre = document.querySelector('.promo__genre');
+janre.innerHTML = `ДРАМА`;
+
+const bg = document.querySelector('.promo__bg');
+bg.style.backgroundImage = "url('../img/bg.jpg')";
+
+const moviess = ['Liga of Honor', 'La-la-lend', 'Oder', 'Pilligrim', 'Logan'].sort();
+
+const m = document.querySelectorAll('.promo__interactive-item');
+m.forEach((e, index) => e.textContent = `${index + 1} ${moviess[index]}`);
+
+const btn = document.querySelector('button');
+btn.addEventListener('click', () => alert('Second click!!'));
+btn.addEventListener('mouseenter', () => console.log('Hover'))
+
+// personalMovieDB.start();
+// personalMovieDB.rememberMyFilms();
+// personalMovieDB.detectPersonalLevel();
+// personalMovieDB.showMyDB(personalMovieDB.privat);
+// personalMovieDB.writeYourGenres();
